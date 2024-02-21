@@ -1,0 +1,24 @@
+﻿@page "/login"
+@inject NavigationManager Navigation
+
+<PageTitle>Login</PageTitle>
+
+<div class="form-group">
+    <label>
+        User:
+        <input @bind="userInput" />
+    </label>
+</div>
+<button @onclick="LoginClick">Login</button>
+
+@code {
+    private string? userInput;
+
+    private void LoginClick()
+    {
+        if (!string.IsNullOrEmpty(userInput))
+        {
+            Navigation.NavigateTo($"/chat/{userInput}");
+        }
+    }
+}
